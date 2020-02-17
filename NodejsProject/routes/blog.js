@@ -18,8 +18,10 @@ router.post('/add',[
 ], function(req, res, next) {
     const result = validationResult(req);
     var errors = result.errors;
-    if (!errors.isEmpty()){
+    if (!result.isEmpty()){
         res.render('addblog',{errors:errors});
+    }else{
+        //insert to db
     }
 });
 module.exports = router;
