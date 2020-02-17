@@ -16,9 +16,10 @@ router.post('/add',[
     check("description","Please Input your blog description").not().isEmpty(),
     check("author","Please Input your blog author").not().isEmpty(),
 ], function(req, res, next) {
-    const errors = validationResult(req);
+    const result = validationResult(req);
+    var errors = result.errors;
     if (!errors.isEmpty()){
-        console.log(errors);
+        res.render('addblog',{errors:errors});
     }
 });
 module.exports = router;
